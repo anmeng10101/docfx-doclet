@@ -53,4 +53,24 @@ public class ElementUtil {
         }
         return false;
     }
+
+    public static boolean isPackagePrivate(Element e) {
+        return !(isPublic(e) || isPrivate(e) || isProtected(e));
+    }
+
+    public static boolean isPrivate(Element e) {
+        return e.getModifiers().contains(Modifier.PRIVATE);
+    }
+
+    public static boolean isProtected(Element e) {
+        return e.getModifiers().contains(Modifier.PROTECTED);
+    }
+
+    public static boolean isPublic(Element e) {
+        return e.getModifiers().contains(Modifier.PUBLIC);
+    }
+
+    public static boolean isPrivateOrPackagePrivate(Element e) {
+        return isPrivate(e) || isPackagePrivate(e);
+    }
 }
